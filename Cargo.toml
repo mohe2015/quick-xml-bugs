@@ -7,4 +7,4 @@ edition = "2018"
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }
-quick-xml = { git = "https://github.com/tafia/quick-xml.git", features = [ "encoding", "serialize" ] }
+quick-xml = { git = "https://github.com/tafia/quick-xml.git", branch = "issue-299", features = [ "encoding", "serialize" ] }

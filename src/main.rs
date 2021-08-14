@@ -25,6 +25,12 @@ struct NestingBug {
     outer2: String
 }
 
+#[derive(Deserialize, Debug)]
+struct EmptyVecBug {
+    #[serde(rename = "$unflatten=element")]
+    outer2: Vec<String>
+}
+
 fn main() {
     println!("Hello, world!");
 
@@ -35,4 +41,8 @@ fn main() {
     let nesting_bug: Result<NestingBug, DeError> = from_str(r#"<?xml version="1.0" encoding="UTF-8"?><root><outer1></outer1><outer2></outer2></root>"#);
 
     println!("{:?}", nesting_bug);
+
+    let empty_vec_bug: Result<EmptyVecBug, DeError> = from_str(r#"<?xml version="1.0" encoding="UTF-8"?><root></root>"#);
+
+    println!("{:?}", empty_vec_bug);
 }
